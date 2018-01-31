@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'achievements',
+    title: 'Steam Battles',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -12,10 +12,17 @@ module.exports = {
   },
   loading: '~/components/loading.vue',
   css: [
-    'tachyons/css/tachyons.min.css',
+    'bulma/css/bulma.css',
   ],
   build: {
     vendor: ['axios']
   },
-  plugins: ['~/plugins/filters']
+  plugins: ['~/plugins/filters'],
+  render: {
+    bundleRenderer: {
+      shouldPreload: (file, type) => {
+        return ['script', 'style', 'font'].includes(type)
+      }
+    }
+  }
 }

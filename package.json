@@ -1,0 +1,25 @@
+{
+  "name": "achievements",
+  "version": "1.0.0",
+  "description": "Achievements Battle with friends",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adrián Blanco Blanco <adriblabla@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "bluebird": "^3.5.1",
+    "lodash": "^4.17.4",
+    "nuxt": "^1.1.1",
+    "tachyons": "^4.9.1",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}

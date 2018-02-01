@@ -25,10 +25,8 @@ export default {
     },
     getClassList() {
       if(this.selectedGame === this.position) {
-        console.log('SE')
         return 'selected-game'
       }
-      console.log('TI', this);
       return '';
     }
   },

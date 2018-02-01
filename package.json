@@ -11,7 +11,7 @@
   "dependencies": {
     "axios": "0.17.1",
     "bluebird": "3.5.1",
-    "bulma": "0.6.2",
+    "bulma": "0.5.1",
     "lodash": "4.17.4",
     "nuxt": "1.1.1",
     "vue": "2.5.13",

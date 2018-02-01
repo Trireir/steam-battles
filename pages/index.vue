@@ -1,16 +1,20 @@
 <template>
-  <div id="paper">
+  <div class="paper">
     <Logo />
-    Put your name here, and let the battle begin!
-    <input 
-      v-on:input="setInputUser"
-    />
+    <h1 class="title big-margin-top">Put your name here, and let the battle begin!</h1>
+    <div class="bigZone">
+      <input
+        class="input is-large has-text-centered"
+        type="text"
+        placeholder="Steam name"
+        v-on:input="setInputUser"
+      >
+    </div>
     <h1>{{indexError}}</h1>
-    <button
-      class="f6 no-underline br-pill ph3 pv2 mb2 dib white bg-dark-blue"
+    <p
+      class="button is-medium is-primary hvr-float-shadow medium-margin"
       v-on:click="validateUsername"
-    >Primary</button>
-
+    >Look for an oponent</p>
   </div>
 </template>
 
@@ -33,18 +37,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  #__layout{
-    display: flex;
-    justify-content: center;
-    background-color: aliceblue;
-  }
-  #paper{
-    width: 80%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-</style>

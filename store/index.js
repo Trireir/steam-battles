@@ -11,6 +11,7 @@ const initState = {
   games: [],
   indexError: '',
   userError: '',
+  selectedGame: 0,
 };
 
 export const state = () => (initState);
@@ -33,6 +34,9 @@ export const mutations = {
   },
   setGames(state, games) {
     state.games = games;
+  },
+  selectGame(state, position) {
+    state.selectedGame = position
   }
 }
 

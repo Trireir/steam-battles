@@ -1,6 +1,6 @@
 <template>
   <div id="container">
-    <div>
+    <div class="achievements-icons">
       <img
         id="border"
         v-bind:src="achievement.userAchieved ? achievement.icon : achievement.icongray"
@@ -12,14 +12,14 @@
     </div>
     <div id="achievementInfo">
       <p
-        id="title"
+        class="achievements-text achievements-title"
         style="
           display: flex;
           flex-grow: 1;
           margin-top: 10px;"
       >{{achievement.displayName}}</p>
-      <p 
-        id="description"
+      <p
+        class="achievements-text achievements-description"
         style="
           display: flex;
           flex-grow: 1;
@@ -41,22 +41,6 @@ export default {
   #container{
     display: flex;
     flex-direction: row;
-  }
-  #title{
-    font-weight: bold;
-    font-size: 18px;
-    justify-content: flex-start;
-    margin: 0px;
-    margin-left: 10px;
-    max-width: 300px;
-  }
-  #description{
-    margin: 0px;
-    margin-left: 10px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 650px;
   }
   #achievementInfo {
     display: flex;

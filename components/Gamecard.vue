@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div id="gameContainer" style="display: flex; cursor: pointer" v-on:click="toggle()">
+  <div v-bind:class="getClassList()">
+    <div id="gameContainer" style="display: flex; cursor: pointer" v-on:click="selectGame()">
       <img
         id='border'
         v-if='game.img_logo_url'
@@ -10,25 +10,6 @@
         {{game.name}}
       </span>
     </div>
-    <transition-group name="cell-fade" mode="out-in" duration="1000">
-      <div v-if="this.showAchievements && game.achievements" v-bind:key="'achievements'">
-        <div>
-          <img
-            id='border'
-            v-bind:src="friendPic"
-          />
-          <img
-            id='border'
-            v-bind:src="userPic"
-          />
-        </div>
-        <li v-for="achievement in game.achievements" :key="achievement.displayName">
-          <Achievements
-            :achievement='achievement'
-          />
-        </li>
-      </div>
-    </transition-group>
   </div>
 </template>
 
@@ -37,13 +18,18 @@ import Achievements from './Achievements'
 
 export default {
   name: 'Gamecard',
-  props: ['game', 'userPic', 'friendPic'],
-  data: () => ({
-    showAchievements: false,
-  }),
+  props: ['position', 'game', 'selectedGame'],
   methods: {
-    toggle() {
-      this.showAchievements = !this.showAchievements
+    selectGame() {
+      this.$store.commit('selectGame', this.position)
+    },
+    getClassList() {
+      if(this.selectedGame === this.position) {
+        console.log('SE')
+        return 'selected-game'
+      }
+      console.log('TI', this);
+      return '';
     }
   },
   components: {

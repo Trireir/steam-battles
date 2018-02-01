@@ -13,6 +13,7 @@ module.exports = {
   loading: '~/components/loading.vue',
   css: [
     'bulma/css/bulma.css',
+    '~/css/main.css'
   ],
   build: {
     vendor: ['axios']

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <ul class="list pa2">
-      <li v-for="game in games" :key="game.appid">
+    <ul>
+      <li v-for="(game, index) in games" :key="game.appid">
         <Gamecard
+          :position="index"
           :game="game"
-          :userPic='userPic'
-          :friendPic='friendPic'
+          :selectedGame="selectedGame"
         />
       </li>
     </ul>
@@ -13,11 +13,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Gamecard from './Gamecard'
 
 export default {
   name: 'Games',
-  props: ['games', 'userPic', 'friendPic'],
+  props: ['games', 'selectedGame'],
   components: {
     Gamecard
   }

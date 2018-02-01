@@ -7,7 +7,6 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  /* font-family: 'Roboto'; */
 }
 
 a {
@@ -45,11 +44,35 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-bottom: 30px; 
+  margin-bottom: 30px;
+  margin: 5px 150px; 
 }
 
 .friend-card {
-  margin: 10px;
+  margin: 15px 20px;
+}
+
+.friend-photo {
+  border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  max-width: 100%;
+  border: 1px solid grey;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  transition: box-shadow 0.3s ease;
+}
+
+.friend-photo:hover,
+.friend-photo:focus {
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.friend-name {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-top: 7px;
 }
 
 .points-table {
@@ -68,9 +91,13 @@ a {
   margin: 10px;
 }
 
-.achievements-icons {
-  display: 'flex';
+.arrow {
+  height: 30px;
+  width: 30px;
+}
 
+.achievements-icons {
+  min-width: 140px;
 }
 
 .achievements-text {

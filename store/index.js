@@ -143,24 +143,28 @@ export const actions = {
   },
   async validateUsername({ commit, state }) {
     try {
+      commit('setError', { message: '', page: 'indexError' });
       const user = await axios.get(`/api/getUserId?username=${state.username}`);
       const userid = user.data.steamid;
       this.$router.push(`/user/${userid}`);
-      commit('setError', { message: '', page: 'indexError' });
     } catch (err) {
       commit('setError', { message: err.response.statusText, page: 'indexError' });
     }
   },
   async LOAD_DATA(context, userid) {
     const { commit } = context;
-    commit('initialize');
-    const friendslist = await axios.get(`/api/getFriendsIds?userid=${userid}`);
-    const rawfriendsinfo = await axios.get(`/api/getUserInfo?userid=${generateArrayIds(userid, friendslist.data)}`);
-
-    const { userinfo, friendsinfo } = processPlayersInfo(rawfriendsinfo.data.players, userid);
-    commit('setUser', userinfo);
-    commit('setFriends', friendsinfo);
-    commit('setError', { message: '', page: 'userError' });
+    try {
+      commit('initialize');
+      commit('setError', { message: '', page: 'userError' });
+      const friendslist = await axios.get(`/api/getFriendsIds?userid=${userid}`);
+      const rawfriendsinfo = await axios.get(`/api/getUserInfo?userid=${generateArrayIds(userid, friendslist.data)}`);
+      
+      const { userinfo, friendsinfo } = processPlayersInfo(rawfriendsinfo.data.players, userid);
+      commit('setUser', userinfo);
+      commit('setFriends', friendsinfo);
+    } catch(err) {
+      commit('setError', { message: 'to malo', page: 'userError' });
+    }
   },
   async LOAD_COMMON_GAMES(context, { userid, friendid }) {
     const { commit } = context;

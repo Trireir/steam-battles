@@ -1,6 +1,6 @@
 <template>
   <div v-bind:class="getClassList()">
-    <div id="gameContainer" style="display: flex; cursor: pointer" v-on:click="selectGame()">
+    <div id="gameContainer" style="display: flex; cursor: pointer; align-items: center" v-on:click="selectGame()">
       <img
         id='border'
         v-if='game.img_logo_url'
@@ -9,6 +9,11 @@
       <span id="gameName">
         {{game.name}}
       </span>
+      <img
+        class="arrow"
+        v-if='this.selectedGame === this.position'
+        src="~/assets/arrow.png"
+      >
     </div>
   </div>
 </template>

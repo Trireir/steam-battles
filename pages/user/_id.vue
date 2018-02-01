@@ -1,10 +1,21 @@
 <template>
   <div>
-    <h1 class="title">Okey {{user.name}}, your time to shine finally arrive. Choose wisely your opponent and destroy him </h1>
-    <div class="friend-list">
-      <div v-for="friend in friends" :key="friend.id">
-        <Friend :friend="friend" :link="`/user/${user.id}/${friend.id}`" />
+    <div v-if='!userError'>
+      <h1 class="title">Okey {{user.name}}, your time to shine finally arrive. Choose wisely your opponent and destroy him </h1>
+      <div class="friend-list">
+        <div v-for="friend in friends" :key="friend.id">
+          <Friend :friend="friend" :link="`/user/${user.id}/${friend.id}`" />
+        </div>
       </div>
+    </div>
+    <div class="general-error big-margin-top" v-else>
+      <div class="notification is-danger column error-notification">
+        <span> I don't know how to say this but...you need to put your account public.</span>
+        <span>Or are you a coward?</span>
+      </div>
+      <img
+        src="~/assets/agallas.png"
+      />
     </div>
   </div>
 </template>

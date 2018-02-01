@@ -18,16 +18,10 @@
       </div>
       <img
         src="~/assets/leggo-my-coffee.png"
-        height=""
       />
     </div>
 
-
-
-
-
-    <h1 v-if="error.statusCode === 404">Page not found</h1>
-    <h1 v-else>An error occurred</h1>
+    <h1>An error occurred</h1>
     <nuxt-link to="/">Come back to the beginning</nuxt-link>
   </div>
 </template>

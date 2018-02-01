@@ -8,7 +8,7 @@
 export default {
   data: () => ({
     loading: false,
-    message: 'Analizing points with a really really complex algorithm...'
+    message: 'Analizing points with a really really complex algorithm...This could take a while...'
   }),
   methods: {
     start() {
@@ -16,9 +16,6 @@ export default {
     },
     finish() {
       this.loading = false
-    },
-    increase(num) {
-      this.message = `Analizing points with a really really complex algorithm... ${num}%`
     }
   }
 }

@@ -14,7 +14,7 @@
     <p
       class="button is-medium is-primary hvr-float-shadow medium-margin"
       v-on:click="validateUsername"
-    >Look for an oponent</p>
+    >Look for an opponent</p>
   </div>
 </template>
 

@@ -8,14 +8,8 @@
         </div>
       </div>
     </div>
-    <div class="general-error big-margin-top" v-else>
-      <div class="notification is-danger column error-notification">
-        <span> I don't know how to say this but...you need to put your account public.</span>
-        <span>Or are you a coward?</span>
-      </div>
-      <img
-        src="~/assets/agallas.png"
-      />
+    <div v-else>
+      <PrivateErrorUser />
     </div>
   </div>
 </template>
@@ -23,6 +17,8 @@
 <script>
 import { mapState } from 'vuex'
 import Friend from '~/components/Friend'
+import PrivateErrorUser from '~/components/PrivateErrorUser'
+
 export default {
   computed: mapState([
     'userError',
@@ -30,7 +26,8 @@ export default {
     'friends'
   ]),
   components: {
-    Friend
+    Friend,
+    PrivateErrorUser
   },
 
   async asyncData({ store, route }) {

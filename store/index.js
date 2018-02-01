@@ -159,12 +159,16 @@ export const actions = {
       commit('setUser', userinfo);
       commit('setFriends', friendsinfo);
     } catch(err) {
-      commit('setError', { message: 'to malo', page: 'userError' });
+      commit('setError', { message: 'fail', page: 'userError' });
     }
   },
   async LOAD_COMMON_GAMES(context, { userid, friendid }) {
     const { commit } = context;
-    commit('initialize');
-    commit('setGames', await getCommonGames(userid, friendid));
+    try {
+      commit('initialize');
+      commit('setGames', await getCommonGames(userid, friendid));
+    } catch (err) {
+      commit('setError', { message: 'fail', page: 'friendError' });
+    }
   },
 };

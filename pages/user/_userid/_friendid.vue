@@ -1,6 +1,6 @@
 <template class="friendContainer">
   <div>
-    <div v-if='!friendidError'>
+    <div v-if='!friendError'>
       <Logo />
       <Classification
         :user='games.user'
@@ -17,8 +17,8 @@
           />
         </div>
     </div> 
-    <div v-if='friendidError'>
-      {{friendidError}}
+    <div v-else>
+      <PrivateError />
     </div>
   </div>
 </template>
@@ -30,18 +30,20 @@ import AchievementsHeader from '../../../components/AchievementsHeader'
 import Classification from '../../../components/Classification'
 import Games from '../../../components/Games'
 import Logo from '../../../components/Logo'
+import PrivateError from '../../../components/PrivateError'
 
 export default {
   computed: mapState([
     'games',
-    'friendidError'
+    'friendError'
   ]),
   components: {
     AchievementsColumn,
     AchievementsHeader,
     Classification,
     Games,
-    Logo
+    Logo,
+    PrivateError
   },
   async asyncData({ store, route }) {
     await store.dispatch('LOAD_COMMON_GAMES', {

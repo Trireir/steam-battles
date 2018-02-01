@@ -3,8 +3,9 @@
     <div v-for="game in games" :key="game.appid">
       <Gamecard
         v-if="game.img_logo_url"
-        :position="index"
         :game="game"
+        :userPhoto="userPhoto"
+        :friendPhoto="friendPhoto"
       />
     </div>
   </div>
@@ -16,7 +17,7 @@ import Gamecard from './Gamecard'
 
 export default {
   name: 'Games',
-  props: ['games'],
+  props: ['games', 'userPhoto', 'friendPhoto'],
   components: {
     Gamecard
   }

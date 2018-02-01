@@ -12,18 +12,10 @@
         <div class="">
           <Games
             :games='games.common'
+            :userPhoto='games.user.avatarmedium'
+            :friendPhoto='games.friend.avatarmedium'
           />
         </div>
-        <!-- <div class="column">
-          <AchievementsHeader
-            :user="games.user.avatarmedium"
-            :friend="games.friend.avatarmedium"
-          />
-          <AchievementsColumn
-            :achievements='games.common.achievements'
-          />  
-        </div>         -->
-
     </div> 
     <div v-if='friendidError'>
       {{friendidError}}

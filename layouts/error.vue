@@ -6,6 +6,11 @@
       />
       <span>It seems that this page doesn't exist...</span>
     </div>
+    <div v-if="error.statusCode === 418">
+      <img
+        src="~/assets/teapot.jpg"
+      />
+    </div>
     <div v-else class="general-error">
       <div class="notification is-danger column error-notification">
         <span>C'mon! Don't be rude!</span>

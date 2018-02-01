@@ -83,10 +83,6 @@ a {
   display: flex;
 }
 
-.selected-game {
-  margin-left: 30px
-}
-
 .columns {
   margin: 10px;
 }
@@ -111,16 +107,13 @@ a {
   align-self: flex-start;
   margin: 0px;
   margin-left: 10px;
-  max-width: 300px;
+  max-width: 900px;
 }
 
 .achievements-description {
   margin: 0px;
   margin-left: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 650px;
+  max-width: 900px;
 }
 
 .general-error {

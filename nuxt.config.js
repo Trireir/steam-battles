@@ -16,9 +16,9 @@ module.exports = {
     '~/css/main.css'
   ],
   build: {
-    vendor: ['axios']
+    vendor: ['axios', 'vue-js-modal']
   },
-  plugins: ['~/plugins/filters'],
+  plugins: ['~/plugins/filters', '~plugins/vue-js-modal'],
   render: {
     bundleRenderer: {
       shouldPreload: (file, type) => {

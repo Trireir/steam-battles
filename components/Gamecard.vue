@@ -1,67 +1,78 @@
 <template>
-  <div v-bind:class="getClassList()">
-    <div id="gameContainer" style="display: flex; cursor: pointer; align-items: center" v-on:click="selectGame()">
-      <img
-        id='border'
-        v-if='game.img_logo_url'
-        v-bind:src="`http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_logo_url}.jpg`"
-      />
-      <span id="gameName">
-        {{game.name}}
-      </span>
-      <img
-        class="arrow"
-        v-if='this.selectedGame === this.position'
-        src="~/assets/arrow.png"
-      >
-    </div>
+  <div class='card-container'>
+    <img
+      class='image'
+      v-if='game.img_logo_url'
+      v-bind:src="`http://media.steampowered.com/steamcommunity/public/images/apps/${game.appid}/${game.img_logo_url}.jpg`"
+      v-on:click='toggle'
+    />
+    <span>
+      {{game.name}}
+    </span>
+    <modal
+      :name="`modal-${game.appid}`"
+      height="auto"
+      width="75%"
+      :scrollable="true"
+      transition="nice-modal-fade"
+      :pivot-y="0.5"
+      :adaptive="true"
+      :reset="true"
+    >
+      <div class='modal-container'>
+        <AchievementsColumn
+          v-if='game.achievements && game.achievements.length !== 0'
+          :achievements='game.achievements'
+        />
+        <div v-else>
+          This game don't have achievements
+        </div>
+      </div>
+    </modal>
+
   </div>
 </template>
 
+
 <script>
-import Achievements from './Achievements'
+import AchievementsColumn from './AchievementsColumn';
 
 export default {
   name: 'Gamecard',
-  props: ['position', 'game', 'selectedGame'],
+  props: ['position', 'game'],
   methods: {
-    selectGame() {
-      this.$store.commit('selectGame', this.position)
-    },
-    getClassList() {
-      if(this.selectedGame === this.position) {
-        return 'selected-game'
-      }
-      return '';
+    toggle() {
+      this.$modal.show(`modal-${this.$props.game.appid}`);
     }
   },
   components: {
-    Achievements
+    AchievementsColumn
   }
 }
 </script>
 
 <style>
-  .cell-fade-enter-active, .cell-fade-leave-active {
-    transition: all 1s ease;
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    width: 184px;
+    margin: 10px;
   }
-  .cell-fade-enter, .cell-fade-leave-to {
-    opacity: 0;
-    transform: translateY(-50px);
+  .image {
+    height: 69px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, .5);
   }
-  div{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  .image:hover,
+  .image:focus {
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.5);
   }
-  #border {
-    border-style: groove;
+
+  .modal1 {
+    height: auto;
   }
-  #gameName{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    align-self: center;
-    margin-left: 10px;
-    font-weight: 500;
-  }
-  #gameContainer:hover{
-    background-color: WhiteSmoke;
+
+  .modal-container {
+    margin: 25px;
   }
 </style>

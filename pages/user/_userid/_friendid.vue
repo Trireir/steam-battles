@@ -1,4 +1,4 @@
-<template id="friendContainer">
+<template class="friendContainer">
   <div>
     <div v-if='!friendidError'>
       <Logo />
@@ -9,23 +9,20 @@
       <span id="commonMessage">
         This are the {{games.common.length}} games and achievements you have in common
       </span>
-      <div class="columns">
-        <div class="column">
+        <div class="">
           <Games
             :games='games.common'
-            :selectedGame='selectedGame'
           />
         </div>
-        <div class="column">
+        <!-- <div class="column">
           <AchievementsHeader
             :user="games.user.avatarmedium"
             :friend="games.friend.avatarmedium"
           />
           <AchievementsColumn
-            :achievements='games.common[selectedGame].achievements'
+            :achievements='games.common.achievements'
           />  
-        </div>        
-      </div>
+        </div>         -->
 
     </div> 
     <div v-if='friendidError'>
@@ -45,8 +42,7 @@ import Logo from '../../../components/Logo'
 export default {
   computed: mapState([
     'games',
-    'friendidError',
-    'selectedGame'
+    'friendidError'
   ]),
   components: {
     AchievementsColumn,
